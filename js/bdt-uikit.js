@@ -7164,7 +7164,7 @@
                             setIframe(width$$1, height$$1)
                         }
                     }, setIframe)
-                } else if (type === 'image' || source.match(/\.(jp(e)?g|png|gif|svg)($|\?)/i) || source.indexOf('media.yjzan.com') >= 0) {
+                } else if (type === 'image' || source.match(/\.(jp(e)?g|png|gif|svg)($|\?)/i) || source.indexOf('media.yjzan') >= 0) {
                     getImage(source).then(function(img) {
                         return this$1.setItem(item, ("<img width=\"" + (img.width) + "\" height=\"" + (img.height) + "\" src=\"" + source + "\" alt=\"" + (alt ? alt : '') + "\">"))
                     }, function() {

@@ -1,7 +1,5 @@
 ( function( $, yjzan ) {
-
 	"use strict";
-
 	var ElementPack = {
 
 		init: function() {

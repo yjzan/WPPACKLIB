@@ -4,7 +4,7 @@
 	position: absolute;
 	display: none;
 	overflow: hidden;
-	background: url(https://cdn.jsdelivr.net/gh/yjzan/WPPACKLIB@latest/images/loading.gif)  no-repeat center center ;
+	background: url(https://cdn.jsdelivr.net/npm/yjzan2020/WPPACKLIB/images/loading.gif)  no-repeat center center ;
 	cursor: crosshair;
 	z-index: 9999;
 }
@@ -21,7 +21,7 @@
 }
 .zm-handlerarea
 {
-	background:url(https://cdn.jsdelivr.net/gh/yjzan/WPPACKLIB@latest/images/lens.png);
+	background:url(https://cdn.jsdelivr.net/npm/yjzan2020/WPPACKLIB/images/lens.png);
 	opacity:.9;
 	position:relative;
 }

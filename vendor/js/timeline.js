@@ -5,6 +5,10 @@ function timeline(collection, options) {
   let resizeTimer;
   let currentIndex = 0;
   // Set default settings
+    if(jQuery(window).width() <= 765)
+        var _defaultValue =1;
+    else
+        var _defaultValue =3;
   const defaultSettings = {
     forceVerticalMode: {
       type: 'integer',
@@ -39,7 +43,7 @@ function timeline(collection, options) {
     },
     visibleItems: {
       type: 'integer',
-      defaultValue: 3
+      defaultValue:_defaultValue
     }
   };
 
@@ -257,10 +261,8 @@ function timeline(collection, options) {
       tl.scroller.style.height = `${evenIndexTallest + oddIndexTallest}px`;
     }
 
-    if (window.innerWidth > tl.settings.forceVerticalMode) {
       setWidths();
       setHeights();
-    }
   }
 
   // Create and add arrow controls to horizontal timeline
@@ -271,8 +273,8 @@ function timeline(collection, options) {
       const topPosition = tl.items[0].offsetHeight;
       prevArrow.className = 'bdt-timeline-nav-button bdt-timeline-nav-button--prev';
       nextArrow.className = 'bdt-timeline-nav-button bdt-timeline-nav-button--next';
-      prevArrow.textContent = 'Previous';
-      nextArrow.textContent = 'Next';
+      // prevArrow.textContent = '<i class="fa fa-angle-left" aria-hidden="true"></i>';
+      // nextArrow.textContent = '<i class="fa fa-angle-right" aria-hidden="true"></i>';
       prevArrow.style.top = `${topPosition}px`;
       nextArrow.style.top = `${topPosition}px`;
       if (currentIndex === 0) {
@@ -390,22 +392,24 @@ function timeline(collection, options) {
 
   // Set up the timelines
   function setUpTimelines() {
-    timelines.forEach((tl) => {
+    timelines.forEach(function(tl){
       tl.timelineEl.style.opacity = 0;
       if (!tl.timelineEl.classList.contains('bdt-timeline--loaded')) {
         wrapElements(tl.items);
       }
       resetTimelines(tl);
       if (window.innerWidth <= tl.settings.forceVerticalMode) {
-        tl.timelineEl.classList.add('bdt-timeline--mobile');
+      //  tl.timelineEl.classList.add('bdt-timeline--mobile');
+        tl.timelineEl.classList.add('bdt-timeline--horizontal');
       }
       if (tl.settings.mode === 'horizontal' && window.innerWidth > tl.settings.forceVerticalMode) {
         setUpHorinzontalTimeline(tl);
       } else {
-        setUpVerticalTimeline(tl);
+       // setUpVerticalTimeline(tl);
+          setUpHorinzontalTimeline(tl);
       }
       tl.timelineEl.classList.add('bdt-timeline--loaded');
-      setTimeout(() => {
+      setTimeout(function(){
         tl.timelineEl.style.opacity = 1;
       }, 500);
     });
